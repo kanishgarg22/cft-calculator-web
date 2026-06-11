@@ -143,10 +143,10 @@ export default function RecordDetailScreen() {
             <span className="info-value">{record.description}</span>
           </div>
         )}
-        {(record.gst > 0 || record.gstManualAmt > 0) && (
+        {record.gst > 0 && (
           <div className="info-row">
             <span className="info-label">GST</span>
-            <span className="info-value">{record.gst > 0 ? `${record.gst}%` : 'Manual amount'}</span>
+            <span className="info-value">{record.gst}%</span>
           </div>
         )}
       </div>

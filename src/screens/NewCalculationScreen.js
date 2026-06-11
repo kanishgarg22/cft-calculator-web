@@ -136,12 +136,7 @@ export default function NewCalculationScreen() {
     setRows((p) => [...p, { id: getNextId(), itemName: '', length: '', width: '', height: '', lengthUnit: last?.lengthUnit || 'inches', widthUnit: last?.widthUnit || 'inches', heightUnit: last?.heightUnit || 'inches', quantity: '', pricePerCft: '' }]);
   }, [rows]);
 
-  const deleteRow = useCallback((i) => {
-    if (rows.length <= MIN_ROWS) { setToast({ message: `Minimum ${MIN_ROWS} rows required.`, type: 'error' }); return; }
-    setConfirmDialog({ title: 'Delete Row', message: `Delete Row ${i + 1}?`, onConfirm: () => { setRows((p) => p.filter((_, idx) => idx !== i)); setConfirmDialog(null); }, onCancel: () => setConfirmDialog(null) });
-  }, [rows.length]);
-
-  const updateRow = useCallback((i, f, v) => { setRows((p) => { const n = [...p]; n[i] = { ...n[i], [f]: v }; return n; }); }, []);
+const updateRow = useCallback((i, f, v) => { setRows((p) => { const n = [...p]; n[i] = { ...n[i], [f]: v }; return n; }); }, []);
   const addCharge = useCallback(() => { setAdditionalCharges((p) => [...p, { id: getNextId(), label: '', amount: '', type: 'plus' }]); }, []);
   const updateCharge = useCallback((i, f, v) => { setAdditionalCharges((p) => { const n = [...p]; n[i] = { ...n[i], [f]: v }; return n; }); }, []);
   const removeCharge = useCallback((i) => { setAdditionalCharges((p) => p.filter((_, idx) => idx !== i)); }, []);

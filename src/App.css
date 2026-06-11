@@ -227,19 +227,19 @@
 }
 
 .row-count-badge {
-  background: #FFE0C5;
+  background: #F0F0F0;
   padding: 4px 12px;
   border-radius: 16px;
-  border: 1px solid #F5C8A0;
+  border: 1px solid #D8D8D8;
   font-size: 11px;
   font-weight: 700;
-  color: #8A4820;
+  color: #555;
 }
 
 .table-wrapper {
   border-radius: 10px;
   overflow-x: auto;
-  border: 1px solid #E0E0D8;
+  border: none;
 }
 
 .items-table {
@@ -267,20 +267,11 @@
 }
 
 .items-table tbody tr {
-  border-bottom: 1px solid #F0F0E8;
   transition: background 0.15s ease;
 }
 
-.items-table tbody tr:last-child {
-  border-bottom: none;
-}
-
-.items-table tbody tr:nth-child(even) {
-  background: #FAFAF7;
-}
-
 .items-table tbody tr:hover {
-  background: #F5F6ED;
+  background: #F8F8F8;
 }
 
 .items-table tbody td {
@@ -360,9 +351,9 @@
 }
 
 .unit-btn {
-  background: #CCD67F;
-  color: #3A4A00;
-  border: 1px solid #AAB855;
+  background: #C0E8B0;
+  color: #1A5818;
+  border: 1px solid #A0D090;
   padding: 7px 6px;
   border-radius: 6px;
   font-size: 10px;
@@ -375,8 +366,8 @@
 }
 
 .unit-btn:hover {
-  background: #B8C460;
-  color: #2A3800;
+  background: #A8D898;
+  color: #0E3A0E;
 }
 
 /* Amount Cell - Rate (Small) */
@@ -432,9 +423,9 @@
   justify-content: flex-end;
   gap: 3px;
   padding: 8px 12px;
-  background: #F0FBF0;
+  background: transparent;
   border-radius: 7px;
-  border: 1.5px solid #C0E8B0;
+  border: none;
   min-height: 38px;
 }
 
@@ -445,24 +436,24 @@
 .amount-display .rupee {
   font-size: 14px;
   font-weight: 800;
-  color: #2A7020;
+  color: #333;
 }
 
 .amount-display .value {
   font-size: 15px;
   font-weight: 800;
-  color: #2A7020;
+  color: #222;
   letter-spacing: 0.3px;
 }
 
 .total-amount {
-  background: #E0F5D8;
-  border-color: #A5CF83;
+  background: transparent;
+  border: none;
 }
 
 .total-amount .rupee,
 .total-amount .value {
-  color: #1A5818;
+  color: #111;
   font-weight: 900;
   font-size: 16px;
 }
@@ -472,11 +463,8 @@
   font-size: 11px;
   font-weight: 500;
   color: #777;
-  background: #FAFAF5;
   padding: 4px 6px;
-  border-radius: 4px;
   display: inline-block;
-  border: 1px solid #E8E8E0;
 }
 
 /* Row Number */

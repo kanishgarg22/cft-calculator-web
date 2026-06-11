@@ -252,8 +252,8 @@ export const generateInvoiceHTML = (record) => {
     body {
       font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
       font-size: 11px;
-      color: #1A1A1A;
-      background: #FFFFFF;
+      color: #111827;
+      background: #FAFAFA;
       padding: 25px;
       line-height: 1.5;
     }
@@ -263,19 +263,20 @@ export const generateInvoiceHTML = (record) => {
       text-align: center;
       padding: 26px 0;
       margin-bottom: 24px;
-      background: #1C1C1C;
+      background: #F3F4F6;
       border-radius: 8px;
+      border: 1px solid #E5E7EB;
     }
     .hdr h1 {
       font-size: 30px;
       font-weight: 800;
       letter-spacing: 5px;
       margin-bottom: 4px;
-      color: #FFFFFF;
+      color: #1F2937;
     }
     .hdr p {
       font-size: 11px;
-      color: #AAAAAA;
+      color: #6B7280;
       letter-spacing: 1px;
     }
 
@@ -288,21 +289,21 @@ export const generateInvoiceHTML = (record) => {
     }
     .info-b {
       flex: 1;
-      border: 1px solid #DDDDDD;
+      border: 1px solid #E5E7EB;
       border-radius: 8px;
       padding: 14px;
       background: #FFFFFF;
     }
     .info-b.hl {
-      border-color: #BBBBBB;
+      border-color: #E5E7EB;
       background: #FFFFFF;
     }
     .info-t {
       font-weight: 700;
       font-size: 11px;
       text-transform: uppercase;
-      color: #555555;
-      border-bottom: 1.5px solid #DDDDDD;
+      color: #6B7280;
+      border-bottom: 1.5px solid #E5E7EB;
       padding-bottom: 7px;
       margin-bottom: 10px;
       letter-spacing: 0.8px;
@@ -310,18 +311,18 @@ export const generateInvoiceHTML = (record) => {
     .info-r {
       display: flex;
       padding: 5px 0;
-      border-bottom: 1px dashed #E8E8E8;
+      border-bottom: 1px dashed #E5E7EB;
     }
     .info-r:last-child { border-bottom: none; }
     .info-l {
       width: 90px;
       font-weight: 600;
-      color: #888888;
+      color: #6B7280;
       font-size: 11px;
     }
     .info-v {
       flex: 1;
-      color: #1A1A1A;
+      color: #111827;
       font-weight: 500;
       font-size: 11px;
     }
@@ -331,12 +332,12 @@ export const generateInvoiceHTML = (record) => {
     .s-title {
       font-weight: 700;
       font-size: 13px;
-      color: #333333;
+      color: #374151;
       margin-bottom: 10px;
       text-transform: uppercase;
       letter-spacing: 0.8px;
       padding-bottom: 5px;
-      border-bottom: 2px solid #1C1C1C;
+      border-bottom: 2px solid #374151;
       display: inline-block;
     }
 
@@ -348,18 +349,18 @@ export const generateInvoiceHTML = (record) => {
       overflow: hidden;
     }
     .tbl th {
-      background: #2D2D2D;
-      color: #FFFFFF;
+      background: #E5E7EB;
+      color: #374151;
       padding: 11px 6px;
       text-align: center;
       font-size: 10px;
       text-transform: uppercase;
       font-weight: 700;
       letter-spacing: 0.5px;
-      border-bottom: 2px solid #1C1C1C;
+      border-bottom: 2px solid #E5E7EB;
     }
     .tc {
-      border: 1px solid #E8E8E8;
+      border: 1px solid #E5E7EB;
       padding: 9px 6px;
       font-size: 11px;
     }
@@ -369,39 +370,39 @@ export const generateInvoiceHTML = (record) => {
     .tc.b { font-weight: 700; }
     .tc.hl {
       background: #FFFFFF;
-      color: #1A1A1A;
+      color: #111827;
       font-weight: 700;
     }
     .tbl tr:nth-child(even) td { background-color: #FAFAFA; }
     .t-row td {
-      background: #F0F0F0 !important;
+      background: #F3F4F6 !important;
       font-weight: 700;
-      color: #1A1A1A;
+      color: #111827;
       padding: 11px 6px;
       font-size: 12px;
-      border-top: 2px solid #CCCCCC;
+      border-top: 2px solid #E5E7EB;
     }
     .empty {
       text-align: center;
       padding: 36px;
-      color: #AAAAAA;
+      color: #6B7280;
       font-style: italic;
-      border: 1px solid #E0E0E0;
+      border: 1px solid #E5E7EB;
     }
 
     /* ── PAYMENT SUMMARY ── */
     .pay-c { margin-top: 28px; page-break-inside: avoid; }
     .pay-b {
-      border: 1px solid #CCCCCC;
+      border: 1px solid #E5E7EB;
       border-radius: 8px;
       overflow: hidden;
     }
     .pay-h {
       background: #FFFFFF;
-      color: #1A1A1A;
+      color: #111827;
       padding: 14px 20px;
       text-align: center;
-      border-bottom: 1px solid #DDDDDD;
+      border-bottom: 1px solid #E5E7EB;
     }
     .pay-h h2 {
       font-size: 14px;
@@ -420,12 +421,12 @@ export const generateInvoiceHTML = (record) => {
       justify-content: space-between;
       align-items: center;
       padding: 10px 0;
-      border-bottom: 1px dashed #E8E8E8;
+      border-bottom: 1px dashed #E5E7EB;
       font-size: 13px;
     }
     .pay-r:last-child { border-bottom: none; }
-    .pay-l { color: #666666; font-weight: 500; }
-    .pay-v { font-weight: 600; color: #1A1A1A; font-size: 13px; }
+    .pay-l { color: #6B7280; font-weight: 500; }
+    .pay-v { font-weight: 600; color: #111827; font-size: 13px; }
 
     /* ── CHARGES ── */
     .ch-sec {
@@ -433,11 +434,11 @@ export const generateInvoiceHTML = (record) => {
       border-radius: 6px;
       padding: 13px;
       margin: 12px 0;
-      border: 1px solid #DDDDDD;
+      border: 1px solid #E5E7EB;
     }
     .ch-t {
       font-weight: 700;
-      color: #333333;
+      color: #374151;
       margin-bottom: 8px;
       font-size: 11px;
       text-transform: uppercase;
@@ -447,34 +448,34 @@ export const generateInvoiceHTML = (record) => {
       display: flex;
       justify-content: space-between;
       padding: 7px 0;
-      border-bottom: 1px dashed #E0E0E0;
+      border-bottom: 1px dashed #E5E7EB;
       font-size: 12px;
     }
     .ch-item:last-child { border-bottom: none; }
-    .ch-label { color: #888888; }
+    .ch-label { color: #6B7280; }
     .ch-amt { font-weight: 600; }
     .ch-amt.add { color: #2A7020; }
     .ch-amt.ded { color: #B03030; }
 
     /* ── BALANCE ── */
     .gt-sec {
-      background: #1C1C1C;
+      background: #F3F4F6;
       margin: 0 -18px -18px -18px;
       padding: 22px 28px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-top: 2px solid #1C1C1C;
+      border-top: 2px solid #E5E7EB;
     }
     .gt-l {
-      color: #FFFFFF;
+      color: #111827;
       font-size: 16px;
       font-weight: 700;
       letter-spacing: 1.5px;
       text-transform: uppercase;
     }
     .gt-v {
-      color: #FFFFFF;
+      color: #111827;
       font-size: 26px;
       font-weight: 800;
       letter-spacing: 0.5px;
@@ -484,7 +485,7 @@ export const generateInvoiceHTML = (record) => {
     .ftr {
       margin-top: 36px;
       padding-top: 22px;
-      border-top: 1px solid #E0E0E0;
+      border-top: 1px solid #E5E7EB;
     }
     .sig-c {
       display: flex;
@@ -493,12 +494,12 @@ export const generateInvoiceHTML = (record) => {
     }
     .sig-b { width: 30%; text-align: center; }
     .sig-l {
-      border-top: 1.5px solid #AAAAAA;
+      border-top: 1.5px solid #E5E7EB;
       width: 140px;
       margin: 0 auto;
       padding-top: 7px;
       font-size: 11px;
-      color: #888888;
+      color: #6B7280;
       font-weight: 500;
     }
     .ty {
@@ -507,16 +508,16 @@ export const generateInvoiceHTML = (record) => {
       padding: 14px;
       background: #FFFFFF;
       border-radius: 6px;
-      border: 1px solid #DDDDDD;
+      border: 1px solid #E5E7EB;
     }
     .ty p {
-      color: #333333;
+      color: #374151;
       font-weight: 700;
       font-size: 13px;
       letter-spacing: 0.8px;
     }
     .ty small {
-      color: #AAAAAA;
+      color: #6B7280;
       font-size: 10px;
     }
   </style>

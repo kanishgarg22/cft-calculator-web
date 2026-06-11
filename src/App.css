@@ -101,9 +101,9 @@
 }
 
 .nav-link.active {
-  background: #FFE3E3;
-  color: #C0507A;
-  border-color: #F5B8D0;
+  background: #FFE9A0;
+  color: #5A4800;
+  border-color: #D9C55A;
   font-weight: 700;
 }
 
@@ -142,14 +142,14 @@
 
 /* ─── BANNER ─── */
 .banner {
-  background: #FFF5F8;
+  background: #FFE9A0;
   padding: 14px 20px;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
-  border: 1px solid #F5D0E0;
-  border-left: 4px solid #F075AA;
+  border: 1px solid #D9C55A;
+  border-left: 4px solid #B8A020;
   margin-bottom: 14px;
   border-radius: 10px;
   animation: fadeInUp 0.3s ease;
@@ -157,7 +157,7 @@
 
 .banner-icon {
   font-size: 16px;
-  color: #F075AA;
+  color: #5A4800;
   font-weight: 700;
 }
 

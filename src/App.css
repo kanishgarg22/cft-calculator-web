@@ -101,9 +101,9 @@
 }
 
 .nav-link.active {
-  background: #A1DD70;
-  color: #2A5C10;
-  border-color: #7DC045;
+  background: #DCF0C3;
+  color: #1E5C0A;
+  border-color: #A8D080;
   font-weight: 700;
 }
 
@@ -148,8 +148,8 @@
   align-items: center;
   justify-content: center;
   gap: 10px;
-  border: 1px solid #A1DD70;
-  border-left: 4px solid #A1DD70;
+  border: 1px solid #DCF0C3;
+  border-left: 4px solid #DCF0C3;
   margin-bottom: 14px;
   border-radius: 10px;
   animation: fadeInUp 0.3s ease;
@@ -157,7 +157,7 @@
 
 .banner-icon {
   font-size: 16px;
-  color: #2A5C10;
+  color: #1E5C0A;
   font-weight: 700;
 }
 
@@ -249,16 +249,16 @@
 }
 
 .items-table thead th {
-  background: #A1DD70;
-  color: #2A5C10;
+  background: #DCF0C3;
+  color: #1E5C0A;
   padding: 11px 8px;
   text-align: center;
   font-size: 10px;
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  border-bottom: 2px solid #7DC045;
-  border-right: 1px solid #8ED058;
+  border-bottom: 2px solid #A8D080;
+  border-right: 1px solid #C0E8A0;
   white-space: nowrap;
 }
 
@@ -370,9 +370,9 @@
 }
 
 .unit-btn {
-  background: #A1DD70;
-  color: #2A5C10;
-  border: 1px solid #7DC045;
+  background: #DCF0C3;
+  color: #1E5C0A;
+  border: 1px solid #A8D080;
   padding: 7px 6px;
   border-radius: 6px;
   font-size: 10px;
@@ -385,8 +385,8 @@
 }
 
 .unit-btn:hover {
-  background: #8ED058;
-  color: #1A3A08;
+  background: #C0E8A0;
+  color: #184008;
 }
 
 /* Amount Cell - Rate (Small) */
@@ -435,17 +435,18 @@
   color: #C0C0B5;
 }
 
-/* Amount Display (Big & Bold) */
+/* Amount Display — styled like rate cell but larger */
 .amount-display {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  gap: 3px;
+  gap: 4px;
   padding: 8px 12px;
-  background: transparent;
-  border-radius: 7px;
-  border: none;
-  min-height: 38px;
+  background: #fff;
+  border: 1px solid #E0E0D8;
+  border-radius: 6px;
+  min-height: 40px;
+  transition: all 0.2s ease;
 }
 
 .amount-wide {
@@ -453,13 +454,14 @@
 }
 
 .amount-display .rupee {
-  font-size: 14px;
-  font-weight: 800;
-  color: #333;
+  font-size: 13px;
+  font-weight: 600;
+  color: #A0A570;
+  flex-shrink: 0;
 }
 
 .amount-display .value {
-  font-size: 15px;
+  font-size: 17px;
   font-weight: 800;
   color: #222;
   letter-spacing: 0.3px;
@@ -523,9 +525,9 @@
 
 /* Add Row Button */
 .add-row-btn {
-  background: #A1DD70;
-  color: #2A5C10;
-  border: 1.5px solid #7DC045;
+  background: #DCF0C3;
+  color: #1E5C0A;
+  border: 1.5px solid #A8D080;
   padding: 11px 0;
   border-radius: 8px;
   font-size: 13px;
@@ -537,7 +539,7 @@
 }
 
 .add-row-btn:hover {
-  background: #8ED058;
+  background: #C0E8A0;
   transform: translateY(-1px);
 }
 
@@ -699,9 +701,9 @@
 }
 
 .charge-type-btn.active-plus {
-  background: #A1DD70;
-  color: #2A5C10;
-  border-color: #7DC045;
+  background: #DCF0C3;
+  color: #1E5C0A;
+  border-color: #A8D080;
 }
 
 .charge-type-btn.inactive {
@@ -778,9 +780,9 @@
 }
 
 .add-charge-btn {
-  background: #A1DD70;
-  color: #2A5C10;
-  border: 1.5px solid #7DC045;
+  background: #DCF0C3;
+  color: #1E5C0A;
+  border: 1.5px solid #A8D080;
   padding: 11px 0;
   border-radius: 8px;
   font-size: 13px;
@@ -791,7 +793,7 @@
 }
 
 .add-charge-btn:hover {
-  background: #8ED058;
+  background: #C0E8A0;
   transform: translateY(-1px);
 }
 
@@ -936,36 +938,36 @@
 }
 
 .btn-preview {
-  background: #A1DD70;
-  color: #2A5C10;
-  border: 1px solid #7DC045;
+  background: #DCF0C3;
+  color: #1E5C0A;
+  border: 1px solid #A8D080;
   font-weight: 700;
 }
 
 .btn-preview:hover {
-  background: #8ED058;
+  background: #C0E8A0;
 }
 
 .btn-download {
-  background: #A1DD70;
-  color: #2A5C10;
-  border: 1px solid #7DC045;
+  background: #DCF0C3;
+  color: #1E5C0A;
+  border: 1px solid #A8D080;
   font-weight: 700;
 }
 
 .btn-download:hover {
-  background: #8ED058;
+  background: #C0E8A0;
 }
 
 .btn-pdf {
-  background: #A1DD70;
-  color: #2A5C10;
-  border: 1px solid #7DC045;
+  background: #DCF0C3;
+  color: #1E5C0A;
+  border: 1px solid #A8D080;
   font-weight: 700;
 }
 
 .btn-pdf:hover {
-  background: #8ED058;
+  background: #C0E8A0;
 }
 
 .btn-save {
@@ -993,14 +995,14 @@
 }
 
 .btn-new {
-  background: #A1DD70;
-  color: #2A5C10;
-  border: 1px solid #7DC045;
+  background: #DCF0C3;
+  color: #1E5C0A;
+  border: 1px solid #A8D080;
   font-weight: 700;
 }
 
 .btn-new:hover {
-  background: #8ED058;
+  background: #C0E8A0;
 }
 
 .btn-edit {
@@ -1084,14 +1086,14 @@
 
 .modal-option:hover {
   background: #E8F8D4;
-  color: #2A5C10;
+  color: #1E5C0A;
 }
 
 .modal-option.selected {
-  background: #A1DD70;
-  color: #1A3A08;
+  background: #DCF0C3;
+  color: #184008;
   font-weight: 700;
-  border: 1px solid #7DC045;
+  border: 1px solid #A8D080;
 }
 
 .modal-cancel-btn {

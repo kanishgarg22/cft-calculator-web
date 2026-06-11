@@ -239,7 +239,7 @@
 .table-wrapper {
   border-radius: 10px;
   overflow-x: auto;
-  border: none;
+  border: 1px solid #E0E0E0;
 }
 
 .items-table {
@@ -267,19 +267,29 @@
 }
 
 .items-table tbody tr {
+  border-bottom: 1px solid #E8E8E8;
   transition: background 0.15s ease;
 }
 
+.items-table tbody tr:last-child {
+  border-bottom: none;
+}
+
 .items-table tbody tr:hover {
-  background: #F8F8F8;
+  background: #F5F9FF;
 }
 
 .items-table tbody td {
-  padding: 6px 5px;
+  padding: 9px 6px;
   text-align: center;
   font-size: 13px;
-  color: #444;
+  color: #333;
   vertical-align: middle;
+  border-right: 1px solid #EFEFEF;
+}
+
+.items-table tbody td:last-child {
+  border-right: none;
 }
 
 .items-table tbody td.left {
@@ -351,9 +361,9 @@
 }
 
 .unit-btn {
-  background: #C0E8B0;
-  color: #1A5818;
-  border: 1px solid #A0D090;
+  background: #BFDDF0;
+  color: #1A5878;
+  border: 1px solid #A0CCE8;
   padding: 7px 6px;
   border-radius: 6px;
   font-size: 10px;
@@ -366,8 +376,8 @@
 }
 
 .unit-btn:hover {
-  background: #A8D898;
-  color: #0E3A0E;
+  background: #A5D0EC;
+  color: #0E3A58;
 }
 
 /* Amount Cell - Rate (Small) */
@@ -759,9 +769,9 @@
 }
 
 .add-charge-btn {
-  background: #E1D9BC;
-  color: #4A3E10;
-  border: 1.5px solid #C8BC8A;
+  background: #A1DD70;
+  color: #2A5C10;
+  border: 1.5px solid #7DC045;
   padding: 11px 0;
   border-radius: 8px;
   font-size: 13px;
@@ -772,7 +782,7 @@
 }
 
 .add-charge-btn:hover {
-  background: #D0C8A0;
+  background: #8ED058;
   transform: translateY(-1px);
 }
 
@@ -917,14 +927,14 @@
 }
 
 .btn-preview {
-  background: #FFFFFF;
+  background: #BFDDF0;
   color: #1A5878;
-  border: 1.5px solid #BFDDF0;
+  border: 1px solid #90C4E0;
   font-weight: 700;
 }
 
 .btn-preview:hover {
-  background: #BFDDF0;
+  background: #A5D0EC;
 }
 
 .btn-download {
@@ -962,26 +972,25 @@
 }
 
 .btn-records {
-  background: #FFFFFF;
-  color: #555;
-  border: 1px solid #E0D8E8;
+  background: #F0F0F0;
+  color: #333;
+  border: 1px solid #D0D0D0;
   font-weight: 600;
 }
 
 .btn-records:hover {
-  background: #FFF0F5;
-  border-color: #F5B8D0;
+  background: #E0E0E0;
 }
 
 .btn-new {
-  background: #FFE9A0;
-  color: #5A4800;
-  border: 1px solid #D9C55A;
+  background: #A1DD70;
+  color: #2A5C10;
+  border: 1px solid #7DC045;
   font-weight: 700;
 }
 
 .btn-new:hover {
-  background: #F5DC80;
+  background: #8ED058;
 }
 
 .btn-edit {

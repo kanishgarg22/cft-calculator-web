@@ -12,6 +12,8 @@ import {
   getRowCalculations,
   downloadPDF,
 } from '../helpers/helpers';
+import { useAuth } from '../contexts/AuthContext';
+import { createRecord, updateRecord, fetchRecord } from '../services/recordService';
 
 function Toast({ message, type, onClose }) {
   useEffect(() => {
@@ -47,6 +49,7 @@ function UnitModal({ show, rows, unitTarget, onSelect, onClose }) {
 export default function NewCalculationScreen() {
   const navigate = useNavigate();
   const { id: editId } = useParams();
+  const { currentUser } = useAuth();
   const today = new Date().toLocaleDateString('en-GB');
   const idCounter = useRef(Date.now() + 100);
   const [isLoading, setIsLoading] = useState(false);
@@ -73,11 +76,11 @@ export default function NewCalculationScreen() {
   const [unitTarget, setUnitTarget] = useState({ row: -1, field: '' });
 
   useEffect(() => {
-    if (editId) {
+    if (!editId) { setIsInitialized(true); return; }
+    if (!currentUser) return;
+    const load = async () => {
       try {
-        const savedRecords = localStorage.getItem('cftRecords');
-        const records = savedRecords ? JSON.parse(savedRecords) : [];
-        const record = records.find((r) => String(r.id) === String(editId));
+        const record = await fetchRecord(currentUser.uid, editId);
         if (record) {
           setEditRecord(record);
           setInvoiceNumber(record.invoiceNumber || '');
@@ -105,9 +108,10 @@ export default function NewCalculationScreen() {
             setAdditionalCharges(record.additionalCharges.map((c) => ({ ...c, id: c.id || Date.now() + Math.random(), type: c.type || 'plus' })));
         }
       } catch (e) { console.error('Error loading edit record:', e); }
-    }
-    setIsInitialized(true);
-  }, [editId, today]);
+      setIsInitialized(true);
+    };
+    load();
+  }, [editId, today, currentUser]);
 
     const totals = useMemo(() => {
     let totalCFT = 0, totalTCFT = 0, subtotal = 0;
@@ -136,11 +140,21 @@ const updateRow = useCallback((i, f, v) => { setRows((p) => { const n = [...p]; 
     if (isLoading) return;
     setIsLoading(true);
     try {
-      const record = { id: editRecord ? editRecord.id : Date.now(), invoiceNumber, date: invoiceDate, buyerName: buyerName.trim(), BuyerName: buyerName.trim(), customerName: buyerName.trim(), soldByName: soldByName.trim(), gst: parseFloat(gstPercent) || 0, gstManualAmt: gstManualAmt !== '' ? parseFloat(gstManualAmt) || 0 : null, rows: rows.map((r) => ({ ...r })), additionalCharges: additionalCharges.map((c) => ({ ...c })), totals: { ...totals } };
-      const saved = localStorage.getItem('cftRecords');
-      let records = saved ? JSON.parse(saved) : [];
-      if (editRecord) records = records.map((r) => (r.id === editRecord.id ? record : r)); else records.unshift(record);
-      localStorage.setItem('cftRecords', JSON.stringify(records));
+      const data = {
+        invoiceNumber, date: invoiceDate,
+        buyerName: buyerName.trim(), soldByName: soldByName.trim(),
+        vehicleNumber: vehicleNumber.trim(), description: description.trim(),
+        gst: parseFloat(gstPercent) || 0,
+        gstManualAmt: gstManualAmt !== '' ? parseFloat(gstManualAmt) || 0 : null,
+        rows: rows.map((r) => ({ ...r })),
+        additionalCharges: additionalCharges.map((c) => ({ ...c })),
+        totals: { ...totals },
+      };
+      if (editRecord) {
+        await updateRecord(currentUser.uid, editRecord.id, data);
+      } else {
+        await createRecord(currentUser.uid, data);
+      }
       setToast({ message: editRecord ? 'Record updated!' : 'Record saved!', type: 'success' });
       setTimeout(() => navigate('/records'), 1500);
     } catch (e) { setToast({ message: 'Failed to save', type: 'error' }); } finally { setIsLoading(false); }

@@ -8,27 +8,24 @@ import {
   downloadPDF,
   openInvoice,
 } from '../helpers/helpers';
+import { useAuth } from '../contexts/AuthContext';
+import { fetchRecord } from '../services/recordService';
 
 export default function RecordDetailScreen() {
   const navigate = useNavigate();
   const { id } = useParams();
+  const { currentUser } = useAuth();
   const [record, setRecord] = useState(null);
   const [loading, setLoading] = useState(true);
   const [isGenerating, setIsGenerating] = useState(false);
 
   useEffect(() => {
-    try {
-      const saved = localStorage.getItem('cftRecords');
-      const records = saved ? JSON.parse(saved) : [];
-      const found = records.find((r) => String(r.id) === String(id));
-      setRecord(found || null);
-    } catch (e) {
-      console.error('Error loading record:', e);
-      setRecord(null);
-    } finally {
-      setLoading(false);
-    }
-  }, [id]);
+    if (!currentUser) return;
+    fetchRecord(currentUser.uid, id)
+      .then((r) => setRecord(r || null))
+      .catch(() => setRecord(null))
+      .finally(() => setLoading(false));
+  }, [id, currentUser]);
 
   if (loading) {
     return (

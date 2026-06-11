@@ -1,7 +1,7 @@
 /* ─── APP LAYOUT ─── */
 .app-container {
   min-height: 100vh;
-  background-color: #FFF9FA;
+  background-color: #FFFFFF;
 }
 
 /* ─── ANIMATIONS ─── */
@@ -257,8 +257,13 @@
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  border-bottom: 1px solid #A0CCE8;
+  border-bottom: 2px solid #90C4E0;
+  border-right: 1px solid #A0CCE8;
   white-space: nowrap;
+}
+
+.items-table thead th:last-child {
+  border-right: none;
 }
 
 .items-table thead th.left {
@@ -285,11 +290,15 @@
   font-size: 13px;
   color: #333;
   vertical-align: middle;
-  border-right: 1px solid #EFEFEF;
+  border-right: 1px solid #E0E0E0;
 }
 
 .items-table tbody td:last-child {
   border-right: none;
+}
+
+.items-table tbody tr {
+  border-bottom: 1px solid #E0E0E0;
 }
 
 .items-table tbody td.left {
@@ -361,9 +370,9 @@
 }
 
 .unit-btn {
-  background: #BFDDF0;
-  color: #1A5878;
-  border: 1px solid #A0CCE8;
+  background: #A1DD70;
+  color: #2A5C10;
+  border: 1px solid #7DC045;
   padding: 7px 6px;
   border-radius: 6px;
   font-size: 10px;
@@ -376,8 +385,8 @@
 }
 
 .unit-btn:hover {
-  background: #A5D0EC;
-  color: #0E3A58;
+  background: #8ED058;
+  color: #1A3A08;
 }
 
 /* Amount Cell - Rate (Small) */
@@ -1073,21 +1082,21 @@
 }
 
 .modal-option:hover {
-  background: #F5F6ED;
-  color: #5A6030;
+  background: #E8F8D4;
+  color: #2A5C10;
 }
 
 .modal-option.selected {
-  background: #F0F2E4;
-  color: #5A6030;
+  background: #A1DD70;
+  color: #1A3A08;
   font-weight: 700;
-  border: 1px solid #C8CDA0;
+  border: 1px solid #7DC045;
 }
 
 .modal-cancel-btn {
-  background: #F5F5F0;
-  color: #888;
-  border: 1px solid #E0E0D8;
+  background: #F0F0F0;
+  color: #666;
+  border: 1px solid #D8D8D8;
   padding: 11px;
   border-radius: 8px;
   width: 100%;

@@ -930,6 +930,29 @@
   transform: translateY(0);
 }
 
+.btn-preview {
+  background: #FFFFFF;
+  color: #1A5878;
+  border: 1.5px solid #BFDDF0;
+  font-weight: 700;
+}
+
+.btn-preview:hover {
+  background: #BFDDF0;
+}
+
+.btn-download {
+  background: #BFDDF0;
+  color: #1A5878;
+  border: 1px solid #90C4E0;
+  font-weight: 700;
+}
+
+.btn-download:hover {
+  background: #A5D0EC;
+}
+
+/* legacy alias kept for safety */
 .btn-pdf {
   background: #BFDDF0;
   color: #1A5878;
@@ -1486,11 +1509,27 @@
   color: #444;
 }
 
+.detail-preview-btn {
+  background: #FFFFFF;
+  color: #1A5878;
+  border: 1.5px solid #BFDDF0;
+  padding: 8px 14px;
+  border-radius: 7px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.detail-preview-btn:hover {
+  background: #BFDDF0;
+}
+
 .detail-pdf-btn {
-  background: #A5CF83;
-  color: #1A5018;
-  border: 1px solid #80B860;
-  padding: 8px 16px;
+  background: #BFDDF0;
+  color: #1A5878;
+  border: 1px solid #90C4E0;
+  padding: 8px 14px;
   border-radius: 7px;
   font-size: 12px;
   font-weight: 700;
@@ -1499,7 +1538,7 @@
 }
 
 .detail-pdf-btn:hover {
-  background: #8EC070;
+  background: #A5D0EC;
 }
 
 /* Info Rows */

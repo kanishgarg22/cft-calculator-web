@@ -11,6 +11,7 @@ import {
   createDefaultRows,
   getRowCalculations,
   downloadPDF,
+  openInvoice,
 } from '../helpers/helpers';
 
 function Toast({ message, type, onClose }) {
@@ -170,17 +171,30 @@ export default function NewCalculationScreen() {
         parseFloat(r.height) > 0
     );
 
+  const buildRecord = () => ({
+    invoiceNumber, date: invoiceDate,
+    buyerName: buyerName.trim() || 'Customer', soldByName: soldByName.trim(),
+    gst: parseFloat(gstPercent) || 0,
+    gstManualAmt: gstManualAmt !== '' ? parseFloat(gstManualAmt) || 0 : null,
+    rows: rows.map((r) => ({ ...r })),
+    additionalCharges: additionalCharges.map((c) => ({ ...c })),
+    totals: { ...totals },
+  });
+
+  const previewPDF = async () => {
+    if (isLoading) return;
+    if (!hasValidItem()) { setToast({ message: 'Add at least one item with Length, Width & Height first', type: 'error' }); return; }
+    setIsLoading(true);
+    try { openInvoice(buildRecord()); setToast({ message: 'Preview opened!', type: 'success' }); }
+    catch (e) { setToast({ message: 'Failed to preview', type: 'error' }); } finally { setIsLoading(false); }
+  };
+
   const generatePDF = async () => {
     if (isLoading) return;
-    if (!hasValidItem()) {
-      setToast({ message: 'Add at least one item with Length, Width & Height first', type: 'error' });
-      return;
-    }
+    if (!hasValidItem()) { setToast({ message: 'Add at least one item with Length, Width & Height first', type: 'error' }); return; }
     setIsLoading(true);
-    try {
-      downloadPDF({ invoiceNumber, date: invoiceDate, buyerName: buyerName.trim() || 'Customer', soldByName: soldByName.trim(), gst: parseFloat(gstPercent) || 0, rows: rows.map((r) => ({ ...r })), additionalCharges: additionalCharges.map((c) => ({ ...c })), totals: { ...totals } });
-      setToast({ message: 'PDF generated!', type: 'success' });
-    } catch (e) { setToast({ message: 'Failed to generate PDF', type: 'error' }); } finally { setIsLoading(false); }
+    try { downloadPDF(buildRecord()); setToast({ message: 'PDF download started!', type: 'success' }); }
+    catch (e) { setToast({ message: 'Failed to generate PDF', type: 'error' }); } finally { setIsLoading(false); }
   };
 
   const resetForm = () => {
@@ -360,12 +374,13 @@ export default function NewCalculationScreen() {
       {/* Action Buttons */}
       <div className="btn-container">
         <div className="btn-row">
-          <button className="btn btn-pdf" onClick={generatePDF}>Generate PDF</button>
-          <button className="btn btn-save" onClick={saveRecord}>{editRecord ? 'Update Record' : 'Save Record'}</button>
+          <button className="btn btn-preview" onClick={previewPDF}>Preview</button>
+          <button className="btn btn-download" onClick={generatePDF}>Download PDF</button>
         </div>
         <div className="btn-row">
+          <button className="btn btn-save" onClick={saveRecord}>{editRecord ? 'Update Record' : 'Save Record'}</button>
           <button className="btn btn-records" onClick={() => navigate('/records')}>View Records</button>
-          {!editRecord && <button className="btn btn-new" onClick={resetForm}>New Calculation</button>}
+          {!editRecord && <button className="btn btn-new" onClick={resetForm}>New</button>}
         </div>
       </div>
     </div>

@@ -6,6 +6,7 @@ import {
   getUnitLabel,
   getRowCalculations,
   downloadPDF,
+  openInvoice,
 } from '../helpers/helpers';
 
 export default function RecordDetailScreen() {
@@ -71,17 +72,20 @@ export default function RecordDetailScreen() {
       parseFloat(row.height) > 0
   );
 
+  const handlePreviewInvoice = () => {
+    if (isGenerating) return;
+    setIsGenerating(true);
+    try { openInvoice(record); }
+    catch (e) { alert('Failed to preview invoice'); }
+    finally { setTimeout(() => setIsGenerating(false), 600); }
+  };
+
   const handleGeneratePDF = () => {
     if (isGenerating) return;
     setIsGenerating(true);
-    try {
-      downloadPDF(record);
-    } catch (e) {
-      console.error('PDF Error:', e);
-      alert('Failed to generate PDF');
-    } finally {
-      setTimeout(() => setIsGenerating(false), 1000);
-    }
+    try { downloadPDF(record); }
+    catch (e) { alert('Failed to generate PDF'); }
+    finally { setTimeout(() => setIsGenerating(false), 1000); }
   };
 
   return (
@@ -102,9 +106,10 @@ export default function RecordDetailScreen() {
           ← Back
         </button>
         <h2 className="detail-title">Invoice Details</h2>
-        <button className="detail-pdf-btn" onClick={handleGeneratePDF}>
-          PDF
-        </button>
+        <div style={{ display: 'flex', gap: '8px' }}>
+          <button className="detail-preview-btn" onClick={handlePreviewInvoice}>Preview</button>
+          <button className="detail-pdf-btn" onClick={handleGeneratePDF}>Download</button>
+        </div>
       </div>
 
       {/* Invoice Info */}
@@ -262,15 +267,9 @@ export default function RecordDetailScreen() {
       {/* Action Buttons */}
       <div className="btn-container">
         <div className="btn-row">
-          <button className="btn btn-pdf" onClick={handleGeneratePDF}>
-            Generate PDF
-          </button>
-          <button
-            className="btn btn-edit"
-            onClick={() => navigate(`/edit/${record.id}`)}
-          >
-            Edit Record
-          </button>
+          <button className="btn btn-preview" onClick={handlePreviewInvoice}>Preview</button>
+          <button className="btn btn-download" onClick={handleGeneratePDF}>Download PDF</button>
+          <button className="btn btn-edit" onClick={() => navigate(`/edit/${record.id}`)}>Edit Record</button>
         </div>
         <button className="btn btn-back" onClick={() => navigate('/records')}>
           ← Back to Records

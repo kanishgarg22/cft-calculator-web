@@ -288,14 +288,14 @@ export const generateInvoiceHTML = (record) => {
     }
     .info-b {
       flex: 1;
-      border: 1px solid #E0E0E0;
+      border: 1px solid #DDDDDD;
       border-radius: 8px;
       padding: 14px;
-      background: #F8F8F8;
+      background: #FFFFFF;
     }
     .info-b.hl {
-      border-color: #CCCCCC;
-      background: #F0F0F0;
+      border-color: #BBBBBB;
+      background: #FFFFFF;
     }
     .info-t {
       font-weight: 700;
@@ -368,13 +368,13 @@ export const generateInvoiceHTML = (record) => {
     .tc.r { text-align: right; padding-right: 10px; }
     .tc.b { font-weight: 700; }
     .tc.hl {
-      background: #F0F0F0;
+      background: #FFFFFF;
       color: #1A1A1A;
       font-weight: 700;
     }
-    .tbl tr:nth-child(even) td { background-color: #F8F8F8; }
+    .tbl tr:nth-child(even) td { background-color: #FAFAFA; }
     .t-row td {
-      background: #EEEEEE !important;
+      background: #F0F0F0 !important;
       font-weight: 700;
       color: #1A1A1A;
       padding: 11px 6px;
@@ -397,11 +397,11 @@ export const generateInvoiceHTML = (record) => {
       overflow: hidden;
     }
     .pay-h {
-      background: #F0F0F0;
+      background: #FFFFFF;
       color: #1A1A1A;
       padding: 14px 20px;
       text-align: center;
-      border-bottom: 1px solid #CCCCCC;
+      border-bottom: 1px solid #DDDDDD;
     }
     .pay-h h2 {
       font-size: 14px;
@@ -413,6 +413,7 @@ export const generateInvoiceHTML = (record) => {
     .pay-bd {
       padding: 18px;
       background: #FFFFFF;
+      border-top: none;
     }
     .pay-r {
       display: flex;
@@ -428,11 +429,11 @@ export const generateInvoiceHTML = (record) => {
 
     /* ── CHARGES ── */
     .ch-sec {
-      background: #F8F8F8;
+      background: #FFFFFF;
       border-radius: 6px;
       padding: 13px;
       margin: 12px 0;
-      border: 1px solid #E0E0E0;
+      border: 1px solid #DDDDDD;
     }
     .ch-t {
       font-weight: 700;
@@ -504,9 +505,9 @@ export const generateInvoiceHTML = (record) => {
       text-align: center;
       margin-top: 26px;
       padding: 14px;
-      background: #F8F8F8;
+      background: #FFFFFF;
       border-radius: 6px;
-      border: 1px solid #E0E0E0;
+      border: 1px solid #DDDDDD;
     }
     .ty p {
       color: #333333;

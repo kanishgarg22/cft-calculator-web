@@ -488,9 +488,9 @@
 
 /* Delete Button */
 .row-delete-btn {
-  background: none;
-  border: none;
-  color: #CCC;
+  background: #FFE3E3;
+  border: 1px solid #F5C0C0;
+  color: #C7372F;
   font-size: 14px;
   font-weight: 700;
   cursor: pointer;
@@ -500,8 +500,8 @@
 }
 
 .row-delete-btn:hover {
-  background: #FCEAEA;
-  color: #D06060;
+  background: #FFCACA;
+  color: #A02020;
 }
 
 /* Table Total Row */
@@ -516,9 +516,9 @@
 
 /* Add Row Button */
 .add-row-btn {
-  background: #FFF5F8;
-  color: #C0507A;
-  border: 1.5px dashed #F5B8D0;
+  background: #A1DD70;
+  color: #2A5C10;
+  border: 1.5px solid #7DC045;
   padding: 11px 0;
   border-radius: 8px;
   font-size: 13px;
@@ -530,8 +530,7 @@
 }
 
 .add-row-btn:hover {
-  background: #FFE3E3;
-  border-style: solid;
+  background: #8ED058;
   transform: translateY(-1px);
 }
 
@@ -693,9 +692,9 @@
 }
 
 .charge-type-btn.active-plus {
-  background: #F0F2E4;
-  color: #6B8030;
-  border-color: #C8CDA0;
+  background: #A1DD70;
+  color: #2A5C10;
+  border-color: #7DC045;
 }
 
 .charge-type-btn.inactive {
@@ -705,9 +704,9 @@
 }
 
 .charge-type-btn.active-minus {
-  background: #FCEAEA;
-  color: #D06060;
-  border-color: #E8BFBF;
+  background: #FFE3E3;
+  color: #C7372F;
+  border-color: #F5C0C0;
 }
 
 .charge-amount-wrap {
@@ -988,14 +987,14 @@
 }
 
 .btn-new {
-  background: #FFE0C5;
-  color: #7A3818;
-  border: 1px solid #F5C098;
+  background: #F1E2D1;
+  color: #6B3A1A;
+  border: 1px solid #DFC4A8;
   font-weight: 700;
 }
 
 .btn-new:hover {
-  background: #FFD0A8;
+  background: #E8D0B8;
 }
 
 .btn-edit {

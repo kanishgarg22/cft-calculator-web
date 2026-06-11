@@ -11,7 +11,6 @@ import {
   createDefaultRows,
   getRowCalculations,
   downloadPDF,
-  openInvoice,
 } from '../helpers/helpers';
 
 function Toast({ message, type, onClose }) {
@@ -166,26 +165,12 @@ const updateRow = useCallback((i, f, v) => { setRows((p) => { const n = [...p]; 
     totals: { ...totals },
   });
 
-  const previewPDF = async () => {
-    if (isLoading) return;
-    if (!hasValidItem()) { setToast({ message: 'Add at least one item with Length, Width & Height first', type: 'error' }); return; }
-    setIsLoading(true);
-    try { openInvoice(buildRecord()); setToast({ message: 'Preview opened!', type: 'success' }); }
-    catch (e) { setToast({ message: 'Failed to preview', type: 'error' }); } finally { setIsLoading(false); }
-  };
-
   const generatePDF = async () => {
     if (isLoading) return;
     if (!hasValidItem()) { setToast({ message: 'Add at least one item with Length, Width & Height first', type: 'error' }); return; }
     setIsLoading(true);
     try { downloadPDF(buildRecord()); setToast({ message: 'PDF download started!', type: 'success' }); }
     catch (e) { setToast({ message: 'Failed to generate PDF', type: 'error' }); } finally { setIsLoading(false); }
-  };
-
-  const resetForm = () => {
-    setInvoiceNumber(`INV-${Date.now().toString().slice(-6)}`); setInvoiceDate(today); setBuyerName(''); setSoldByName(''); setVehicleNumber(''); setDescription(''); setGstPercent(''); setGstManualAmt('');
-    setRows(createDefaultRows()); setAdditionalCharges([{ id: Date.now() + 900, label: '', amount: '', type: 'plus' }, { id: Date.now() + 901, label: '', amount: '', type: 'minus' }]);
-    setEditRecord(null); window.scrollTo(0, 0);
   };
 
   if (!isInitialized && editId) return (<div className="loading-overlay"><div className="loading-box"><div className="spinner"></div><p className="loading-text">Loading...</p></div></div>);
@@ -357,13 +342,8 @@ const updateRow = useCallback((i, f, v) => { setRows((p) => { const n = [...p]; 
       {/* Action Buttons */}
       <div className="btn-container">
         <div className="btn-row">
-          <button className="btn btn-preview" onClick={previewPDF}>Preview</button>
-          <button className="btn btn-download" onClick={generatePDF}>Download PDF</button>
-        </div>
-        <div className="btn-row">
           <button className="btn btn-save" onClick={saveRecord}>{editRecord ? 'Update Record' : 'Save Record'}</button>
-          <button className="btn btn-records" onClick={() => navigate('/records')}>View Records</button>
-          {!editRecord && <button className="btn btn-new" onClick={resetForm}>New</button>}
+          <button className="btn btn-download" onClick={generatePDF}>Download PDF</button>
         </div>
       </div>
     </div>

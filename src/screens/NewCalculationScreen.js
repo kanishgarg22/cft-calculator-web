@@ -22,20 +22,6 @@ function Toast({ message, type, onClose }) {
   return <div className={`toast ${type}`}>{message}</div>;
 }
 
-function ConfirmDialog({ title, message, onConfirm, onCancel }) {
-  return (
-    <div className="modal-overlay" onClick={onCancel}>
-      <div className="confirm-box" onClick={(e) => e.stopPropagation()}>
-        <h3 className="confirm-title">{title}</h3>
-        <p className="confirm-message">{message}</p>
-        <div className="confirm-buttons">
-          <button className="confirm-btn cancel" onClick={onCancel}>Cancel</button>
-          <button className="confirm-btn danger" onClick={onConfirm}>Delete</button>
-        </div>
-      </div>
-    </div>
-  );
-}
 
 function UnitModal({ show, rows, unitTarget, onSelect, onClose }) {
   if (!show) return null;
@@ -66,7 +52,6 @@ export default function NewCalculationScreen() {
   const idCounter = useRef(Date.now() + 100);
   const [isLoading, setIsLoading] = useState(false);
   const [toast, setToast] = useState(null);
-  const [confirmDialog, setConfirmDialog] = useState(null);
   const [editRecord, setEditRecord] = useState(null);
   const [isInitialized, setIsInitialized] = useState(false);
 
@@ -205,7 +190,6 @@ const updateRow = useCallback((i, f, v) => { setRows((p) => { const n = [...p]; 
   return (
     <div className="page-container">
       {toast && <Toast message={toast.message} type={toast.type} onClose={() => setToast(null)} />}
-      {confirmDialog && <ConfirmDialog title={confirmDialog.title} message={confirmDialog.message} onConfirm={confirmDialog.onConfirm} onCancel={confirmDialog.onCancel} />}
       {isLoading && <div className="loading-overlay"><div className="loading-box"><div className="spinner"></div><p className="loading-text">Processing...</p></div></div>}
       <UnitModal show={showUnitModal} rows={rows} unitTarget={unitTarget} onSelect={selectUnit} onClose={() => setShowUnitModal(false)} />
 

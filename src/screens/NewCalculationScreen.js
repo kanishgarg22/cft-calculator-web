@@ -76,6 +76,7 @@ export default function NewCalculationScreen() {
   const [buyerName, setBuyerName] = useState('');
   const [soldByName, setSoldByName] = useState('');
   const [gstPercent, setGstPercent] = useState('');
+  const [gstManualAmt, setGstManualAmt] = useState('');
   const [rows, setRows] = useState(createDefaultRows());
   const [additionalCharges, setAdditionalCharges] = useState([
     { id: Date.now() + 900, label: '', amount: '', type: 'plus' },
@@ -97,6 +98,7 @@ export default function NewCalculationScreen() {
           setBuyerName(record.buyerName || record.BuyerName || record.customerName || '');
           setSoldByName(record.soldByName || '');
           setGstPercent(String(record.gst || ''));
+          setGstManualAmt(record.gstManualAmt != null ? String(record.gstManualAmt) : '');
           if (record.rows && record.rows.length > 0) {
             const editRows = record.rows.map((row, index) => ({
               id: row.id || Date.now() + index, itemName: row.itemName || '',
@@ -123,13 +125,14 @@ export default function NewCalculationScreen() {
     rows.forEach((row) => { const { cft, totalCft, amount } = getRowCalculations(row); totalCFT += cft; totalTCFT += totalCft; subtotal += amount; });
     const misc = additionalCharges.reduce((sum, ch) => { const a = parseFloat(ch.amount) || 0; return ch.type === 'minus' ? sum - a : sum + a; }, 0);
     const gstValue = parseFloat(gstPercent) || 0;
-    const gstAmt = subtotal * (gstValue / 100);
-    return { totalCFT, totalTCFT, subtotal, misc, gstAmt, grandTotal: subtotal + gstAmt + misc };
-  }, [rows, gstPercent, additionalCharges]);
+    const gstAmtCalc = subtotal * (gstValue / 100);
+    const gstAmt = gstManualAmt !== '' ? (parseFloat(gstManualAmt) || 0) : gstAmtCalc;
+    return { totalCFT, totalTCFT, subtotal, misc, gstAmt, gstAmtCalc, grandTotal: subtotal + gstAmt + misc };
+  }, [rows, gstPercent, gstManualAmt, additionalCharges]);
 
   const addRow = useCallback(() => {
     const last = rows[rows.length - 1];
-    setRows((p) => [...p, { id: getNextId(), itemName: '', length: '', width: '', height: '', lengthUnit: last?.lengthUnit || 'inches', widthUnit: last?.widthUnit || 'inches', heightUnit: last?.heightUnit || 'inches', quantity: '', pricePerCft: last?.pricePerCft || '' }]);
+    setRows((p) => [...p, { id: getNextId(), itemName: '', length: '', width: '', height: '', lengthUnit: last?.lengthUnit || 'inches', widthUnit: last?.widthUnit || 'inches', heightUnit: last?.heightUnit || 'inches', quantity: '', pricePerCft: '' }]);
   }, [rows]);
 
   const deleteRow = useCallback((i) => {
@@ -149,7 +152,7 @@ export default function NewCalculationScreen() {
     if (isLoading) return;
     setIsLoading(true);
     try {
-      const record = { id: editRecord ? editRecord.id : Date.now(), invoiceNumber, date: invoiceDate, buyerName: buyerName.trim(), BuyerName: buyerName.trim(), customerName: buyerName.trim(), soldByName: soldByName.trim(), gst: parseFloat(gstPercent) || 0, rows: rows.map((r) => ({ ...r })), additionalCharges: additionalCharges.map((c) => ({ ...c })), totals: { ...totals } };
+      const record = { id: editRecord ? editRecord.id : Date.now(), invoiceNumber, date: invoiceDate, buyerName: buyerName.trim(), BuyerName: buyerName.trim(), customerName: buyerName.trim(), soldByName: soldByName.trim(), gst: parseFloat(gstPercent) || 0, gstManualAmt: gstManualAmt !== '' ? parseFloat(gstManualAmt) || 0 : null, rows: rows.map((r) => ({ ...r })), additionalCharges: additionalCharges.map((c) => ({ ...c })), totals: { ...totals } };
       const saved = localStorage.getItem('cftRecords');
       let records = saved ? JSON.parse(saved) : [];
       if (editRecord) records = records.map((r) => (r.id === editRecord.id ? record : r)); else records.unshift(record);
@@ -181,7 +184,7 @@ export default function NewCalculationScreen() {
   };
 
   const resetForm = () => {
-    setInvoiceNumber(`INV-${Date.now().toString().slice(-6)}`); setInvoiceDate(today); setBuyerName(''); setSoldByName(''); setGstPercent('');
+    setInvoiceNumber(`INV-${Date.now().toString().slice(-6)}`); setInvoiceDate(today); setBuyerName(''); setSoldByName(''); setGstPercent(''); setGstManualAmt('');
     setRows(createDefaultRows()); setAdditionalCharges([{ id: Date.now() + 900, label: '', amount: '', type: 'plus' }, { id: Date.now() + 901, label: '', amount: '', type: 'minus' }]);
     setEditRecord(null); window.scrollTo(0, 0);
   };
@@ -277,7 +280,9 @@ export default function NewCalculationScreen() {
         <h3 className="section-title">GST</h3>
         <div className="field-row">
           <label className="field-label">GST %</label>
-          <input type="text" value={gstPercent} onChange={(e) => setGstPercent(sanitizeDecimalInput(e.target.value))} className="field-input" style={{ textAlign: 'right', maxWidth: '200px' }} />
+          <input type="text" value={gstPercent} onChange={(e) => { setGstPercent(sanitizeDecimalInput(e.target.value)); setGstManualAmt(''); }} className="field-input" style={{ textAlign: 'right', maxWidth: '90px' }} placeholder="0" />
+          <label className="field-label" style={{ width: 'auto', color: '#888', paddingLeft: '8px' }}>Amount ₹</label>
+          <input type="text" value={gstManualAmt} onChange={(e) => setGstManualAmt(sanitizeDecimalInput(e.target.value))} className="field-input" style={{ textAlign: 'right', maxWidth: '160px' }} placeholder={totals.gstAmtCalc > 0 ? formatINR(totals.gstAmtCalc) : '0.00'} />
         </div>
       </div>
 
@@ -332,9 +337,9 @@ export default function NewCalculationScreen() {
           <span className="total-line-label">Subtotal</span>
           <span className="total-line-value">₹{formatINR(totals.subtotal)}</span>
         </div>
-        {gstPercent && (
+        {(gstPercent || gstManualAmt) && totals.gstAmt > 0 && (
           <div className="total-line">
-            <span className="total-line-label">GST ({gstPercent}%)</span>
+            <span className="total-line-label">GST{gstPercent ? ` (${gstPercent}%)` : ' (Manual)'}</span>
             <span className="total-line-value">₹{formatINR(totals.gstAmt)}</span>
           </div>
         )}

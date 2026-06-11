@@ -126,10 +126,10 @@ export default function RecordDetailScreen() {
           <span className="info-label">Seller</span>
           <span className="info-value">{record.soldByName || 'N/A'}</span>
         </div>
-        {record.gst > 0 && (
+        {(record.gst > 0 || record.gstManualAmt > 0) && (
           <div className="info-row">
             <span className="info-label">GST</span>
-            <span className="info-value">{record.gst}%</span>
+            <span className="info-value">{record.gst > 0 ? `${record.gst}%` : 'Manual amount'}</span>
           </div>
         )}
       </div>
@@ -246,9 +246,9 @@ export default function RecordDetailScreen() {
           </div>
         )}
 
-        {record.gst > 0 && (
+        {(record.gst > 0 || record.gstManualAmt > 0) && safeTotals.gstAmt > 0 && (
           <div className="total-line">
-            <span className="total-line-label">GST ({record.gst}%)</span>
+            <span className="total-line-label">GST{record.gst > 0 ? ` (${record.gst}%)` : ' (Manual)'}</span>
             <span className="total-line-value">₹{formatINR(safeTotals.gstAmt)}</span>
           </div>
         )}

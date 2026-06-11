@@ -196,7 +196,7 @@ export const generateInvoiceHTML = (record) => {
 
     if (length > 0 && width > 0 && height > 0) {
       rowNumber++;
-      const { qty, rate, totalCft, amount } = getRowCalculations(row);
+      const { cft, qty, rate, totalCft, amount } = getRowCalculations(row);
       grandTotalTCFT += totalCft;
       grandTotalAmount += amount;
 
@@ -207,6 +207,7 @@ export const generateInvoiceHTML = (record) => {
           <td class="tc c">${length} ${getUnitLabel(row.lengthUnit)}</td>
           <td class="tc c">${width} ${getUnitLabel(row.widthUnit)}</td>
           <td class="tc c">${height} ${getUnitLabel(row.heightUnit)}</td>
+          <td class="tc c">${cft.toFixed(3)}</td>
           <td class="tc c">${qty}</td>
           <td class="tc c b">${totalCft.toFixed(3)}</td>
           <td class="tc r">₹${formatINR(rate)}</td>
@@ -560,22 +561,23 @@ export const generateInvoiceHTML = (record) => {
   <table class="tbl">
     <thead>
       <tr>
-        <th style="width:5%;">#</th>
-        <th style="width:18%;text-align:left;">Item Name</th>
-        <th style="width:10%;">Length</th>
-        <th style="width:10%;">Width</th>
-        <th style="width:10%;">Height</th>
-        <th style="width:8%;">Qty</th>
-        <th style="width:12%;">Total CFT</th>
+        <th style="width:4%;">#</th>
+        <th style="width:15%;text-align:left;">Item Name</th>
+        <th style="width:9%;">Length</th>
+        <th style="width:9%;">Width</th>
+        <th style="width:9%;">Height</th>
+        <th style="width:8%;">CFT/pc</th>
+        <th style="width:7%;">Qty</th>
+        <th style="width:11%;">Total CFT</th>
         <th style="width:12%;">Rate</th>
-        <th style="width:15%;">Amount</th>
+        <th style="width:16%;">Amount</th>
       </tr>
     </thead>
     <tbody>
       ${rowsHTML}
       ${rowNumber > 0 ? `
         <tr class="t-row">
-          <td colspan="6" style="text-align:right;padding-right:14px;">SUBTOTAL</td>
+          <td colspan="7" style="text-align:right;padding-right:14px;">SUBTOTAL</td>
           <td style="text-align:center;">${grandTotalTCFT.toFixed(3)} CFT</td>
           <td></td>
           <td style="text-align:right;padding-right:10px;">₹${formatINR(grandTotalAmount)}</td>
@@ -607,9 +609,9 @@ export const generateInvoiceHTML = (record) => {
             </span>
           </div>` : ''}
 
-        ${record.gst > 0 ? `
+        ${(record.gst > 0 || record.gstManualAmt > 0) && t.gstAmt > 0 ? `
           <div class="pay-r">
-            <span class="pay-l">GST @ ${record.gst}%</span>
+            <span class="pay-l">GST${record.gst > 0 ? ` @ ${record.gst}%` : ''}</span>
             <span class="pay-v">₹${formatINR(t.gstAmt)}</span>
           </div>` : ''}
 

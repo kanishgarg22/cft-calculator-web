@@ -131,6 +131,18 @@ export default function RecordDetailScreen() {
           <span className="info-label">Seller</span>
           <span className="info-value">{record.soldByName || 'N/A'}</span>
         </div>
+        {record.vehicleNumber && (
+          <div className="info-row">
+            <span className="info-label">Vehicle No</span>
+            <span className="info-value bold">{record.vehicleNumber}</span>
+          </div>
+        )}
+        {record.description && (
+          <div className="info-row">
+            <span className="info-label">Description</span>
+            <span className="info-value">{record.description}</span>
+          </div>
+        )}
         {(record.gst > 0 || record.gstManualAmt > 0) && (
           <div className="info-row">
             <span className="info-label">GST</span>

@@ -253,7 +253,7 @@ export const generateInvoiceHTML = (record) => {
       font-family: 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
       font-size: 11px;
       color: #111827;
-      background: #FAFAFA;
+      background: #FFF9FA;
       padding: 25px;
       line-height: 1.5;
     }
@@ -263,16 +263,16 @@ export const generateInvoiceHTML = (record) => {
       text-align: center;
       padding: 26px 0;
       margin-bottom: 24px;
-      background: #F3F4F6;
+      background: #DCF0C3;
       border-radius: 8px;
-      border: 1px solid #E5E7EB;
+      border: 1px solid #A8D080;
     }
     .hdr h1 {
       font-size: 30px;
       font-weight: 800;
       letter-spacing: 5px;
       margin-bottom: 4px;
-      color: #1F2937;
+      color: #1E5C0A;
     }
     .hdr p {
       font-size: 11px;
@@ -349,15 +349,15 @@ export const generateInvoiceHTML = (record) => {
       overflow: hidden;
     }
     .tbl th {
-      background: #E5E7EB;
-      color: #374151;
+      background: #DCF0C3;
+      color: #1E5C0A;
       padding: 11px 6px;
       text-align: center;
       font-size: 10px;
       text-transform: uppercase;
       font-weight: 700;
       letter-spacing: 0.5px;
-      border-bottom: 2px solid #E5E7EB;
+      border-bottom: 2px solid #A8D080;
     }
     .tc {
       border: 1px solid #E5E7EB;
@@ -373,14 +373,14 @@ export const generateInvoiceHTML = (record) => {
       color: #111827;
       font-weight: 700;
     }
-    .tbl tr:nth-child(even) td { background-color: #FAFAFA; }
+    .tbl tr:nth-child(even) td { background-color: #FFF9FA; }
     .t-row td {
-      background: #F3F4F6 !important;
+      background: #DCF0C3 !important;
       font-weight: 700;
-      color: #111827;
+      color: #1E5C0A;
       padding: 11px 6px;
       font-size: 12px;
-      border-top: 2px solid #E5E7EB;
+      border-top: 2px solid #A8D080;
     }
     .empty {
       text-align: center;
@@ -459,13 +459,13 @@ export const generateInvoiceHTML = (record) => {
 
     /* ── BALANCE ── */
     .gt-sec {
-      background: #E8F5D0;
+      background: #DCF0C3;
       margin: 0 -18px -18px -18px;
       padding: 22px 28px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-top: 2px solid #B8D880;
+      border-top: 2px solid #A8D080;
     }
     .gt-l {
       color: #2A4A00;
@@ -551,6 +551,8 @@ export const generateInvoiceHTML = (record) => {
         <span class="info-l">Seller:</span>
         <span class="info-v">${sanitizeForHTML(record.soldByName || 'N/A')}</span>
       </div>
+      ${record.vehicleNumber ? `<div class="info-r"><span class="info-l">Vehicle No:</span><span class="info-v b">${sanitizeForHTML(record.vehicleNumber)}</span></div>` : ''}
+      ${record.description ? `<div class="info-r"><span class="info-l">Description:</span><span class="info-v">${sanitizeForHTML(record.description)}</span></div>` : ''}
     </div>
   </div>
 

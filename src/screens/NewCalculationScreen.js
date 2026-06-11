@@ -61,6 +61,8 @@ export default function NewCalculationScreen() {
   const [invoiceDate, setInvoiceDate] = useState(today);
   const [buyerName, setBuyerName] = useState('');
   const [soldByName, setSoldByName] = useState('');
+  const [vehicleNumber, setVehicleNumber] = useState('');
+  const [description, setDescription] = useState('');
   const [gstPercent, setGstPercent] = useState('');
   const [gstManualAmt, setGstManualAmt] = useState('');
   const [rows, setRows] = useState(createDefaultRows());
@@ -83,6 +85,8 @@ export default function NewCalculationScreen() {
           setInvoiceDate(record.date || today);
           setBuyerName(record.buyerName || record.BuyerName || record.customerName || '');
           setSoldByName(record.soldByName || '');
+          setVehicleNumber(record.vehicleNumber || '');
+          setDescription(record.description || '');
           setGstPercent(String(record.gst || ''));
           setGstManualAmt(record.gstManualAmt != null ? String(record.gstManualAmt) : '');
           if (record.rows && record.rows.length > 0) {
@@ -154,6 +158,7 @@ const updateRow = useCallback((i, f, v) => { setRows((p) => { const n = [...p]; 
   const buildRecord = () => ({
     invoiceNumber, date: invoiceDate,
     buyerName: buyerName.trim() || 'Customer', soldByName: soldByName.trim(),
+    vehicleNumber: vehicleNumber.trim(), description: description.trim(),
     gst: parseFloat(gstPercent) || 0,
     gstManualAmt: gstManualAmt !== '' ? parseFloat(gstManualAmt) || 0 : null,
     rows: rows.map((r) => ({ ...r })),
@@ -178,7 +183,7 @@ const updateRow = useCallback((i, f, v) => { setRows((p) => { const n = [...p]; 
   };
 
   const resetForm = () => {
-    setInvoiceNumber(`INV-${Date.now().toString().slice(-6)}`); setInvoiceDate(today); setBuyerName(''); setSoldByName(''); setGstPercent(''); setGstManualAmt('');
+    setInvoiceNumber(`INV-${Date.now().toString().slice(-6)}`); setInvoiceDate(today); setBuyerName(''); setSoldByName(''); setVehicleNumber(''); setDescription(''); setGstPercent(''); setGstManualAmt('');
     setRows(createDefaultRows()); setAdditionalCharges([{ id: Date.now() + 900, label: '', amount: '', type: 'plus' }, { id: Date.now() + 901, label: '', amount: '', type: 'minus' }]);
     setEditRecord(null); window.scrollTo(0, 0);
   };
@@ -211,6 +216,8 @@ const updateRow = useCallback((i, f, v) => { setRows((p) => { const n = [...p]; 
         <div className="form-grid">
           <div className="field-row"><label className="field-label">Buyer</label><input type="text" value={buyerName} onChange={(e) => setBuyerName(e.target.value)} className="field-input" placeholder="Enter buyer name" /></div>
           <div className="field-row"><label className="field-label">Seller</label><input type="text" value={soldByName} onChange={(e) => setSoldByName(e.target.value)} className="field-input" placeholder="Your company name" /></div>
+          <div className="field-row"><label className="field-label">Vehicle No</label><input type="text" value={vehicleNumber} onChange={(e) => setVehicleNumber(e.target.value)} className="field-input" placeholder="e.g. MH12AB1234" /></div>
+          <div className="field-row"><label className="field-label">Description</label><input type="text" value={description} onChange={(e) => setDescription(e.target.value)} className="field-input" placeholder="e.g. Teak wood, Pine..." /></div>
         </div>
       </div>
 
@@ -258,7 +265,6 @@ const updateRow = useCallback((i, f, v) => { setRows((p) => { const n = [...p]; 
                 <td>{totals.totalTCFT.toFixed(4)}</td>
                 <td></td>
                 <td><div className="amount-display amount-wide total-amount"><span className="rupee">₹</span><span className="value">{formatINR(totals.subtotal)}</span></div></td>
-                <td></td>
               </tr>
             </tbody>
           </table>

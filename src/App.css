@@ -771,9 +771,9 @@
 }
 
 .add-charge-btn {
-  background: #FFF5F8;
-  color: #C0507A;
-  border: 1.5px dashed #F5B8D0;
+  background: #E1D9BC;
+  color: #4A3E10;
+  border: 1.5px solid #C8BC8A;
   padding: 11px 0;
   border-radius: 8px;
   font-size: 13px;
@@ -784,8 +784,7 @@
 }
 
 .add-charge-btn:hover {
-  background: #FFE3E3;
-  border-style: solid;
+  background: #D0C8A0;
   transform: translateY(-1px);
 }
 
@@ -987,14 +986,14 @@
 }
 
 .btn-new {
-  background: #F1E2D1;
-  color: #6B3A1A;
-  border: 1px solid #DFC4A8;
+  background: #FFE9A0;
+  color: #5A4800;
+  border: 1px solid #D9C55A;
   font-weight: 700;
 }
 
 .btn-new:hover {
-  background: #E8D0B8;
+  background: #F5DC80;
 }
 
 .btn-edit {

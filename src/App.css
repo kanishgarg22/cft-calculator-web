@@ -101,9 +101,9 @@
 }
 
 .nav-link.active {
-  background: #FFE9A0;
-  color: #5A4800;
-  border-color: #D9C55A;
+  background: #FEFDDF;
+  color: #5A5800;
+  border-color: #CCD67F;
   font-weight: 700;
 }
 
@@ -142,14 +142,14 @@
 
 /* ─── BANNER ─── */
 .banner {
-  background: #FFE9A0;
+  background: #FEFDDF;
   padding: 14px 20px;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
-  border: 1px solid #D9C55A;
-  border-left: 4px solid #B8A020;
+  border: 1px solid #CCD67F;
+  border-left: 4px solid #CCD67F;
   margin-bottom: 14px;
   border-radius: 10px;
   animation: fadeInUp 0.3s ease;
@@ -157,7 +157,7 @@
 
 .banner-icon {
   font-size: 16px;
-  color: #5A4800;
+  color: #5A5800;
   font-weight: 700;
 }
 
@@ -360,9 +360,9 @@
 }
 
 .unit-btn {
-  background: #FFE3E3;
-  color: #C0507A;
-  border: 1px solid #F5B8D0;
+  background: #CCD67F;
+  color: #3A4A00;
+  border: 1px solid #AAB855;
   padding: 7px 6px;
   border-radius: 6px;
   font-size: 10px;
@@ -375,8 +375,8 @@
 }
 
 .unit-btn:hover {
-  background: #FFD0DC;
-  color: #A03060;
+  background: #B8C460;
+  color: #2A3800;
 }
 
 /* Amount Cell - Rate (Small) */
@@ -869,22 +869,22 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #F8EEFF;
+  background: #E8F5D0;
   padding: 16px 22px;
-  border-top: 2px solid #DDB8F5;
+  border-top: 2px solid #B8D880;
 }
 
 .grand-total-label {
   font-size: 15px;
   font-weight: 800;
-  color: #7030A0;
+  color: #2A4A00;
   letter-spacing: 0.3px;
 }
 
 .grand-total-value {
   font-size: 22px;
   font-weight: 900;
-  color: #5A20A0;
+  color: #1E3800;
 }
 
 /* ─── BUTTONS ─── */

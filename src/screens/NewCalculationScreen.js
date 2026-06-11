@@ -254,7 +254,6 @@ export default function NewCalculationScreen() {
               <th style={{ width: '75px' }}>T.CFT</th>
               <th style={{ width: '100px' }}>Rate</th>
               <th style={{ width: '180px' }}>Amount</th>
-              <th style={{ width: '36px' }}></th>
             </tr></thead>
             <tbody>
               {rows.map((row, index) => {
@@ -271,7 +270,6 @@ export default function NewCalculationScreen() {
                     <td><span className="calc-cell">{totalCft.toFixed(4)}</span></td>
                     <td><div className="amount-cell rate-cell"><span className="rupee-sign">₹</span><input type="text" value={row.pricePerCft} onChange={(e) => updateRow(index, 'pricePerCft', sanitizeDecimalInput(e.target.value, 5))} className="amount-input rate-input" placeholder="" maxLength={9} /></div></td>
                     <td><div className="amount-display amount-wide"><span className="rupee">₹</span><span className="value">{formatINR(amount)}</span></div></td>
-                    <td><button className="row-delete-btn" onClick={() => deleteRow(index)}>✕</button></td>
                   </tr>
                 );
               })}

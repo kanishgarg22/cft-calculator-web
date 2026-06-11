@@ -459,23 +459,23 @@ export const generateInvoiceHTML = (record) => {
 
     /* ── BALANCE ── */
     .gt-sec {
-      background: #F3F4F6;
+      background: #E8F5D0;
       margin: 0 -18px -18px -18px;
       padding: 22px 28px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      border-top: 2px solid #E5E7EB;
+      border-top: 2px solid #B8D880;
     }
     .gt-l {
-      color: #111827;
+      color: #2A4A00;
       font-size: 16px;
       font-weight: 700;
       letter-spacing: 1.5px;
       text-transform: uppercase;
     }
     .gt-v {
-      color: #111827;
+      color: #1E3800;
       font-size: 26px;
       font-weight: 800;
       letter-spacing: 0.5px;

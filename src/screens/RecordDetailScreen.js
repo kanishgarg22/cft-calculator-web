@@ -237,6 +237,13 @@ export default function RecordDetailScreen() {
           <span className="total-line-value">₹{formatINR(safeTotals.subtotal)}</span>
         </div>
 
+        {(record.gst > 0 || record.gstManualAmt > 0) && safeTotals.gstAmt > 0 && (
+          <div className="total-line">
+            <span className="total-line-label">GST{record.gst > 0 ? ` (${record.gst}%)` : ' (Manual)'}</span>
+            <span className="total-line-value">₹{formatINR(safeTotals.gstAmt)}</span>
+          </div>
+        )}
+
         {safeTotals.misc !== undefined && safeTotals.misc !== 0 && (
           <div className="total-line">
             <span className="total-line-label">Adjustments</span>
@@ -248,13 +255,6 @@ export default function RecordDetailScreen() {
             >
               {safeTotals.misc >= 0 ? '+' : ''}₹{formatINR(safeTotals.misc)}
             </span>
-          </div>
-        )}
-
-        {(record.gst > 0 || record.gstManualAmt > 0) && safeTotals.gstAmt > 0 && (
-          <div className="total-line">
-            <span className="total-line-label">GST{record.gst > 0 ? ` (${record.gst}%)` : ' (Manual)'}</span>
-            <span className="total-line-value">₹{formatINR(safeTotals.gstAmt)}</span>
           </div>
         )}
 

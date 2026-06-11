@@ -591,6 +591,12 @@ export const generateInvoiceHTML = (record) => {
           <span class="pay-v">₹${formatINR(t.subtotal)}</span>
         </div>
 
+        ${(record.gst > 0 || record.gstManualAmt > 0) && t.gstAmt > 0 ? `
+          <div class="pay-r">
+            <span class="pay-l">GST${record.gst > 0 ? ` @ ${record.gst}%` : ''}</span>
+            <span class="pay-v">₹${formatINR(t.gstAmt)}</span>
+          </div>` : ''}
+
         ${chargesHtml ? `
           <div class="ch-sec">
             <div class="ch-t">Adjustments</div>
@@ -603,12 +609,6 @@ export const generateInvoiceHTML = (record) => {
             <span class="pay-v" style="color:${t.misc >= 0 ? '#6B8030' : '#D06060'}">
               ${t.misc >= 0 ? '+' : ''}₹${formatINR(t.misc)}
             </span>
-          </div>` : ''}
-
-        ${(record.gst > 0 || record.gstManualAmt > 0) && t.gstAmt > 0 ? `
-          <div class="pay-r">
-            <span class="pay-l">GST${record.gst > 0 ? ` @ ${record.gst}%` : ''}</span>
-            <span class="pay-v">₹${formatINR(t.gstAmt)}</span>
           </div>` : ''}
 
         <div class="gt-sec">

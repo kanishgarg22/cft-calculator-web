@@ -878,22 +878,22 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #E8F5D0;
+  background: #DCF0C3;
   padding: 16px 22px;
-  border-top: 2px solid #B8D880;
+  border-top: 2px solid #A8D080;
 }
 
 .grand-total-label {
   font-size: 15px;
   font-weight: 800;
-  color: #2A4A00;
+  color: #1E5C0A;
   letter-spacing: 0.3px;
 }
 
 .grand-total-value {
   font-size: 22px;
   font-weight: 900;
-  color: #1E3800;
+  color: #1E5C0A;
 }
 
 /* ─── BUTTONS ─── */
@@ -1518,8 +1518,8 @@
 
 .detail-preview-btn {
   background: #FFFFFF;
-  color: #1A5878;
-  border: 1.5px solid #BFDDF0;
+  color: #1E5C0A;
+  border: 1.5px solid #A8D080;
   padding: 8px 14px;
   border-radius: 7px;
   font-size: 12px;
@@ -1529,13 +1529,13 @@
 }
 
 .detail-preview-btn:hover {
-  background: #BFDDF0;
+  background: #DCF0C3;
 }
 
 .detail-pdf-btn {
-  background: #BFDDF0;
-  color: #1A5878;
-  border: 1px solid #90C4E0;
+  background: #DCF0C3;
+  color: #1E5C0A;
+  border: 1px solid #A8D080;
   padding: 8px 14px;
   border-radius: 7px;
   font-size: 12px;
@@ -1545,7 +1545,7 @@
 }
 
 .detail-pdf-btn:hover {
-  background: #A5D0EC;
+  background: #C0E8A0;
 }
 
 /* Info Rows */
@@ -1591,15 +1591,15 @@
 }
 
 .detail-table thead th {
-  background: #BFDDF0;
-  color: #1A5878;
+  background: #DCF0C3;
+  color: #1E5C0A;
   padding: 10px 8px;
   text-align: center;
   font-size: 10px;
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  border-bottom: 1px solid #A0CCE8;
+  border-bottom: 1px solid #A8D080;
 }
 
 .detail-table thead th.left {
@@ -1638,8 +1638,9 @@
 
 .detail-table tbody td.highlight {
   font-weight: 700;
-  color: #1A5818;
-  background: #EBF7E3;
+  font-size: 11px;
+  color: #1E5C0A;
+  background: #DCF0C3;
 }
 
 /* Charge Items */

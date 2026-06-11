@@ -278,11 +278,6 @@ export default function RecordDetailScreen() {
 
       {/* Action Buttons */}
       <div className="btn-container">
-        <div className="btn-row">
-          <button className="btn btn-preview" onClick={handlePreviewInvoice}>Preview</button>
-          <button className="btn btn-download" onClick={handleGeneratePDF}>Download PDF</button>
-          <button className="btn btn-edit" onClick={() => navigate(`/edit/${record.id}`)}>Edit Record</button>
-        </div>
         <button className="btn btn-back" onClick={() => navigate('/records')}>
           ← Back to Records
         </button>
